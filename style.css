@@ -20,6 +20,9 @@ body {
     height: 100vh;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 img,
@@ -51,4 +54,16 @@ h6 {
 #root,
 #__next {
     isolation: isolate;
+}
+
+.container {
+    display: grid;
+    grid: repeat(16, 1fr) / repeat(16, 1fr);
+    width: 600px;
+    height: 600px;
+    border: 1px solid black;
+}
+
+.square {
+    border: 1px solid red;
 }
