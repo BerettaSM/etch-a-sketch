@@ -65,5 +65,10 @@ h6 {
 }
 
 .square {
-    border: 1px solid red;
+    border: 1px solid black;
+    transition: background-color .5s;
+}
+
+.square.painted {
+    background-color: gray;
 }

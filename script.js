@@ -1,5 +1,12 @@
 const container = document.querySelector('.container')
 
+container.addEventListener('mouseover', e => {
+    if(e.target === e.currentTarget) return
+
+    const square = e.target
+    square.classList.add('painted')
+})
+
 createDivs()
 
 function createDivs() {
