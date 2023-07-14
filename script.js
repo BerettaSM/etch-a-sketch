@@ -27,7 +27,23 @@ function paintSquare(event) {
     if (event.target === event.currentTarget) return;
 
     const square = event.target;
-    square.classList.add('painted');
+    
+    const isNotPainted = square.style.backgroundColor === ''
+
+    if(isNotPainted)
+        square.style.backgroundColor = getRandomColor()
+    else
+        darkenColor(square)
+}
+
+function darkenColor(square) {
+    const color = square.style.backgroundColor
+    const splitColor = color.slice(4, -1).replace(' ', '').split(',')
+    const [r, g, b] = splitColor.map(color => {
+        const newColor = +color - 25
+        return newColor >= 0 ? newColor : 0
+    })
+    square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
 }
 
 function askForNewDimensions() {
@@ -54,5 +70,16 @@ function resizeGrid(numSides) {
 
 function clear() {
     for(const square of container.children)
-        square.classList.remove('painted')
+        square.style.backgroundColor = null
+}
+
+function getRandomColor() {
+    const r = getRandomNumber(256);
+    const g = getRandomNumber(256);
+    const b = getRandomNumber(256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+function getRandomNumber(range) {
+    return Math.floor(Math.random() * range);
 }
